@@ -169,3 +169,7 @@ Dog veterinarian clinic management (9) is chosen for this homework. The system w
 * **`visits`** and **`pets`** (one-to-many): one visit can have exactly one pet, while each pet can have many visits.
   * **`visits.pet_id`** is a foreign key referencing **`pets.id`**
 * **`pets`** and **`vets`** (many-to-many via **`visits`**): a pet can be seen by many vets over time, and a vet can treat many pets. Implemented through the associative table **`visits`**, using two one-to-many relationships **`(visits.vet_id`** \-\> **`vets.id`** and **`visits.pet_id`** \-\> **`pets.id`**).
+
+# Part 4: ER diagram
+
+![schema](./images/vet_clinic_project.png)
