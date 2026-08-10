@@ -46,6 +46,7 @@ Dog veterinarian clinic management (9) is chosen for this homework. The system w
    * **Constraints**:
      * ***`pk_pets`***: PRIMARY KEY (id)
      * ***`fk_pets_customer`***: FOREIGN KEY (customer\_id) REFERENCES **`customers`**(id)
+     * ***`chk_pets_gender`***: CHECK (gender IN (\'M\', \'F\'))
 4. **Table Name: `customers`**
    * **Description**: keeps info on pet owners (customers).
    * **Attributes**:
@@ -81,7 +82,7 @@ Dog veterinarian clinic management (9) is chosen for this homework. The system w
    * **Description**: lookup table that stores the allowed statuses for visits.
    * **Attributes**:
      * ***`id`***: INTEGER, PK, NOT NULL, UNIQUE
-     * ***`name`***: VARCHAR(100), NOT NULL
+     * ***`name`***: VARCHAR(50), NOT NULL
    * **Constraints**:
      * ***`pk_visit_statuses`***: PRIMARY KEY (id)
      * ***`uq_name`***: UNIQUE (name)

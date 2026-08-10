@@ -76,6 +76,8 @@ Dog veterinarian clinic management (9) is chosen for this homework. The system w
      PRIMARY KEY (id)
      -- fk_pets_customer:
      FOREIGN KEY (customer_id) REFERENCES customers(id)
+     -- chk_pets_gender:
+     CHECK (gender IN ('M', 'F'))
      ```
 4. **Table Name: `customers`**
    * **Description**: keeps info on pet owners (customers).
@@ -146,7 +148,7 @@ Dog veterinarian clinic management (9) is chosen for this homework. The system w
      -- id:
      INTEGER, PK, NOT NULL, UNIQUE
      -- name:
-     VARCHAR(100), NOT NULL
+     VARCHAR(50), NOT NULL
      ```
    * **Constraints**:
      ```sql
