@@ -1,0 +1,11 @@
+order_id,customer_id,item,amount,total_by_customer
+1,4,Keyboard,400,700
+2,4,Mouse,300,700
+3,3,Monitor,12000,12000
+4,1,Keyboard,400,400
+5,2,Mousepad,250,250
+6,6,Monitor,10000,10450
+7,6,Keyboard,450,10450
+8,7,Mouse,350,350
+9,9,Monitor,11000,11000
+10,10,Mousepad,300,300
