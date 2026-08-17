@@ -35,7 +35,7 @@ RETURNS DECIMAL(10, 2)
 LANGUAGE Plpgsql
 AS $$
 BEGIN
-    RETURN COALESCE(p_salary, 0.00) * 0.10;
+    RETURN p_salary * 0.10;
 END;
 $$;
 
