@@ -1,3 +1,4 @@
+-- ====================== step 1 =========================
 CREATE OR REPLACE FUNCTION CalculateAnnualBonus( --noqa: CP03
     p_employee_id INT,
     p_salary DECIMAL DEFAULT NULL
@@ -40,6 +41,7 @@ END;
 $$;
 
 
+-- ====================== step 2 =========================
 SELECT
     FirstName,
     LastName,
@@ -64,6 +66,7 @@ FROM
 SELECT CalculateAnnualBonus(9999, NULL); --noqa: CP03
 
 
+-- ====================== step 3 =========================
 CREATE OR REPLACE
 VIEW IT_Department_View AS
 SELECT
@@ -77,6 +80,7 @@ WHERE
     Department = 'IT';
 
 
+-- ====================== step 4 =========================
 SELECT --noqa: AM04,LT09
     *
 FROM

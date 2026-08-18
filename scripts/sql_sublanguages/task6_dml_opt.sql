@@ -1,3 +1,4 @@
+-- ====================== step 1 =========================
 SELECT P.ProjectName
 FROM
     Projects AS P
@@ -15,6 +16,7 @@ WHERE
 
 BEGIN;
 
+-- ====================== step 2 =========================
 WITH
     IT_Projects AS (
         SELECT DISTINCT Ep.Projectid
@@ -37,6 +39,7 @@ WHERE
 RETURNING P.*;
 
 
+-- ====================== step 3 =========================
 UPDATE Projects
 SET
     EndDate = (StartDate + INTERVAL '1 year')::DATE
@@ -47,6 +50,7 @@ RETURNING Projects.*;
 COMMIT;
 
 
+-- ====================== step 4 =========================
 BEGIN;
 
 WITH

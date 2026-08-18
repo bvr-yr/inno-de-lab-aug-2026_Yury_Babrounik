@@ -10,6 +10,7 @@ $$;
 BEGIN;
 
 
+-- ====================== step 1 =========================
 UPDATE Employees
 SET
     Salary = Salary * 1.1
@@ -18,6 +19,7 @@ WHERE
 RETURNING Employees.*;
 
 
+-- ====================== step 2 =========================
 UPDATE Employees
 SET
     Department = 'Senior IT'
@@ -29,6 +31,7 @@ RETURNING Employees.*;
 SAVEPOINT before_delete;
 
 
+-- ====================== step 3 =========================
 CALL ShowDeleteMessage('WHERE IN');
 DELETE
 FROM Employees AS E1
@@ -94,6 +97,7 @@ ORDER BY
 COMMIT;
 
 
+-- ====================== step 4 =========================
 BEGIN;
 
 WITH

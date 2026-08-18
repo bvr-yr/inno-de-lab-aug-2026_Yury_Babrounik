@@ -1,5 +1,6 @@
 BEGIN;
 
+-- ====================== step 1 =========================
 CREATE TABLE Departments (
     DepartmentID SERIAL PRIMARY KEY,
     DepartmentName VARCHAR(50) UNIQUE NOT NULL,
@@ -9,12 +10,14 @@ CREATE TABLE Departments (
 );
 
 
+-- ====================== step 2 =========================
 ALTER TABLE Employees
 ADD COLUMN Email VARCHAR(100);
 
 
-SAVEPOINT before_popuating_email;
+SAVEPOINT before_populating_email;
 
+-- ====================== step 3 =========================
 -- safely auto-generate using PG-specific CONCAT_WS():
 UPDATE Employees
 SET
@@ -40,7 +43,7 @@ ALTER TABLE Employees
 ADD CONSTRAINT UQ_Employees_Email UNIQUE (Email);
 
 
-ROLLBACK TO before_popuating_email;
+ROLLBACK TO before_populating_email;
 
 
 -- or simply populate with predefined values:
@@ -64,10 +67,13 @@ WHERE
     E.EmployeeID = V.EmployeeID
 RETURNING E.Email;
 
+
+-- ====================== step 4 =========================
 ALTER TABLE Employees
 ADD CONSTRAINT UQ_Employees_Email UNIQUE (Email);
 
 
+-- ====================== step 5 =========================
 ALTER TABLE Departments
 RENAME COLUMN Location TO OfficeLocation;
 
