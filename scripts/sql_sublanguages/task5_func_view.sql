@@ -40,15 +40,24 @@ END;
 $$;
 
 
-SELECT CalculateAnnualBonus(EmployeeID, Salary) --noqa: CP03
+SELECT
+    FirstName,
+    LastName,
+    CalculateAnnualBonus(EmployeeID, Salary) AS AnnualBonus  --noqa: CP03
 FROM
     Employees;
 
-SELECT CalculateAnnualBonus(EmployeeID) --noqa: CP03
+SELECT
+    FirstName,
+    LastName,
+    CalculateAnnualBonus(EmployeeID) AS AnnualBonus  --noqa: CP03
 FROM
     Employees;
 
-SELECT CalculateAnnualBonus(Salary) --noqa: CP03
+SELECT
+    FirstName,
+    LastName,
+    CalculateAnnualBonus(Salary) AS AnnualBonus  --noqa: CP03
 FROM
     Employees;
 
