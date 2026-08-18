@@ -9,6 +9,15 @@ DROP ROLE IF EXISTS hr_user;
 
 
 -- ====================== step 1 =========================
+/*
+to test password properly set first we need to change default auth policy.
+temporally use ./pg_hba.conf for that:
+    - /tmp/pg_hba.conf inside container
+    - execute ./hba_apply.sql
+    - restart container to propagate 'hba_file' value server-side
+    - script, tests
+    - execute ./hba_reset.sql for shipped defaults if needed, restart container
+*/
 CREATE ROLE hr_user
     LOGIN
     PASSWORD 'i1ov3inn0';
