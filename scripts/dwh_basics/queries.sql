@@ -91,3 +91,20 @@ GROUP BY
     dv.last_name
 ORDER BY
     total_net_revenue DESC;
+
+
+-- example check that uses source_visit_id to join both facts
+-- to compare visit total vs service total for the same visit
+SELECT
+    fv.source_visit_id,
+    fv.visit_total_paid,
+    SUM(fs.net_amount) AS services_total_net_amount
+FROM
+    fact_visits AS fv
+    INNER JOIN
+        fact_services AS fs
+        ON fv.source_visit_id = fs.source_visit_id
+GROUP BY
+    fv.source_visit_id
+ORDER BY
+    fv.source_visit_id;
