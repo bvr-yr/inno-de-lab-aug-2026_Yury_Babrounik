@@ -3,19 +3,28 @@ import sys
 from random import randint
 
 
-def read_int(prompt: str) -> int:
+def read_int(prompt: str, *, positive: bool = False) -> int:
     """Shared helper.
 
     reads value from user input with a prompt,
     returning int if valid, or showing error msg
+
+    optional bool 'positive' (default False) restricts
+    valid values to be > 0
     """
     while True:
         value = input(prompt).strip()
         try:
-            return int(value)
+            value_int = int(value)
+            if positive and value_int < 1:
+                # quote value with !r specifier
+                print(f"{value!r} should be positive")
+                continue
+
         except ValueError:
-            # quote value with !r specifier
             print(f"{value!r} is not an integer")
+        else:
+            return value_int
 
 
 def task_1() -> None:
@@ -26,8 +35,8 @@ def task_1() -> None:
 
 def task_2() -> None:
     """Task 2: Rectangle area."""
-    a = read_int("Enter rectangle length: ")
-    b = read_int("Enter rectangle width: ")
+    a = read_int("Enter rectangle length: ", positive=True)
+    b = read_int("Enter rectangle width: ", positive=True)
     # not declaring separate area var, better calculate directly in f-string
     print(f"Rectangle area is: {a * b}")
 
