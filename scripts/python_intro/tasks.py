@@ -139,22 +139,19 @@ def task_6() -> None:
 
     while True:
         input_op = input(f"Enter operator {ops_pretty}: ").strip()
-        if input_op in operations:
-            try:
-                print(f"Result: {a} {input_op} {b} = {operations[input_op](a, b)}")
-            except ZeroDivisionError:
-                """
-                simply exit with msg for now.
-                we need another flow depending on what we want:
-                    - change operator
-                    - change 2nd number
-                    - start over
-                """
-                print("Division by zero, abort")
-                sys.exit(3)
-            break
+        if input_op not in operations:
+            print(f"{input_op!r} is not a valid operator")
+            continue
 
-        print(f"{input_op!r} is not a valid operator")
+        try:
+            result = operations[input_op](a, b)
+        except ZeroDivisionError:
+            print("Division by zero")
+            b = read_number("Enter second number again: ")
+            continue
+
+        print(f"Result: {a} {input_op} {b} = {result}")
+        break
 
 
 HELP = """
