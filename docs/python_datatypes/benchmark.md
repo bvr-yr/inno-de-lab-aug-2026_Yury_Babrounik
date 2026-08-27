@@ -1,10 +1,7 @@
 # Benchmark
 
-While performing Tasks 1 and 2, I've discovered various solutions and methods, and there are two reasons I made this benchmark:
-- I just wondered how they perform **at scale**
-- I hate nonsense
-
-Or three, I love reports.
+While performing Tasks 1 and 2, I've discovered various solutions and methods, so making a little benchmark seemed natural to me.
+Mainly I was curious about Python implementations behavior under large input workload.
 
 ## TOC
 
@@ -39,7 +36,7 @@ Or three, I love reports.
 - **CPU:** AMD Ryzen 5 7430U
 - **Python:** 3.14.6
 
-To simulate real-world scenario as much as possible, I used precompiled Rust binaries as data generators and piped output directly to Python scripts, without producing any later output.
+I used precompiled Rust binaries as data generators and piped output directly to Python scripts, without producing any later output.
 
 Binaries can be compiled from source ([task1](#generator), [task2](#generator-1)) with:
 
@@ -86,12 +83,7 @@ poop -d 100000 'command1' 'command2' ...
 
 </details>
 
-Key point is to avoid unnecessary intermediate operations and redundant objects creation. That's a huge tax.
-
-Loop with `.enumerate()` was just a pure experiment, it is obviously slow.
-
 ---
-
 
 #### Task 2
 
@@ -108,12 +100,6 @@ Loop with `.enumerate()` was just a pure experiment, it is obviously slow.
   ![img](./images/task2_bench.png)
 
 </details>
-
-While using slice notation to extract `AMOUNT` field is obviously faster, I still prefer `.removeprefix()` here. The whole intent stays very clear.
-
-But the most important discovery was utilizing **walrus operator** `:=`.
-
-`.split()`, well, just too heavy. Especially if we assume that format is fixed.
 
 ## Task 1 Source
 
