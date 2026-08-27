@@ -13,7 +13,6 @@ sanitized_transactions = [
     amount
     for transaction in raw_transactions
     # here .startswith() acts as pre-filter for fixed format STATUS:AMOUNT
-    # it is cheaper than splitting every item in inner loop
     if transaction.startswith(PREFIX)
     # assign variable once with ':=' right in expression
     # this helps to avoid double-parsing: in condition and
