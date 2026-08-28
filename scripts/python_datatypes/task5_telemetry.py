@@ -26,8 +26,11 @@ active_nodes_count = len(active_nodes)
 metrics = {
     # since we are interested only in active nodes, use existing active_nodes_count
     # otherwise use len(values_cpu) instead
-    "average_cpu": round(sum(values_cpu) / active_nodes_count, 2),
-    "max_ram": max(values_ram),
+    "average_cpu": round(sum(values_cpu) / active_nodes_count, 2)
+    # guard divzero if system_telemetry is just a reference list here
+    if values_cpu
+    else None,
+    "max_ram": max(values_ram, default=None),
 }
 
 summary = {
@@ -38,5 +41,7 @@ summary = {
 print(f"Active nodes: {active_nodes}")
 
 # builtin 'pprint' module has limited formatting options
-# use json to pretty-print summary structure
+# use json to pretty-print summary structure if acceptable.
+# but as far as I can see, weird example output formatting
+# is just PDF/parser bug, and print(summary) is probably enough
 print(f"Telemetry summary:\n{json.dumps(summary, indent=4)}")
