@@ -29,18 +29,18 @@ def calculate_overdue_fine(
         total_fine: float = numeric_days * fine_rate
         return_index: float = DEFAULT_RETURN_INDEX_BASE / numeric_days
     except TypeError as e:
-        print(f"[TYPE ERROR] Invalid data type for {title!r}: {e}")
+        print(f"\n\n[TYPE ERROR] Invalid data type for {title!r}: {e}")
     except ValueError as e:
-        print(f"[VALUE ERROR] Unable to convert days to number for {title!r}: {e}")
+        print(f"\n\n[VALUE ERROR] Unable to convert days to number for {title!r}: {e}")
     except ZeroDivisionError as e:
         # exception message may vary between Python versions
         # so hardcode if 'float division by zero' is needed
-        print(f"[ZERO DIVISION ERROR] No overdue return for {title!r}: {e}")
+        print(f"\n\n[ZERO DIVISION ERROR] No overdue return for {title!r}: {e}")
     else:
         print(f"\nMovie: {title!r} | Total fine: {total_fine}$ | Index: {return_index}")
         return total_fine, return_index
     finally:
-        print("\n--- Return transaction check done ---\n\n")
+        print("\n--- Return transaction check done ---")
 
 
 def run_tests(data: list[tuple[str, Any, Any]]) -> None:

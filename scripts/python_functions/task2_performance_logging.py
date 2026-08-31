@@ -64,7 +64,6 @@ def print_sorted_report(data: RevenueData) -> None:
     sorted_report = get_sorted_report(data)
 
     print("Top categories by revenue:")
-
     for i, item in enumerate(sorted_report, start=1):
         print(f"{i}. {item['category']}: {item['total_sales']}")
 
