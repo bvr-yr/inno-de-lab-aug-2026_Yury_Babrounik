@@ -1,4 +1,4 @@
-"""Constatnts used across tasks."""
+"""Constants used across tasks."""
 
 MAX_RENTAL_BATCH_LIMIT = 150.0
 PERFORMANCE_LOG_PREFIX = "[PERF_LOG]"
