@@ -36,7 +36,7 @@ def print_rental_batch(data: list[tuple[str, int, float, float]]) -> None:
         title, quantity, rental_rate, discount = batch
         # to show named vs positional args usage
         match i:
-            case 0:
+            case 1:
                 final_sum, is_limit_exceeded = calculate_rental_batch(
                     discount=discount,
                     quantity=quantity,
