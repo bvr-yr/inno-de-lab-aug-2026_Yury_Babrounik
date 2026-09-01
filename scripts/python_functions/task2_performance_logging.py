@@ -7,13 +7,6 @@ from consts import PERFORMANCE_LOG_PREFIX, TIME_DECIMALS
 from test_data import TASK_2_DATA
 
 # for convenient usage in multiple functions
-# dict[str, str | float] is explicitly required by the task but looks ambiguous
-# because sorted() will raise on mixed data in 'total_sales'.
-# probably worth doing one of:
-#   - implement float() conversion with ValueError/TypeError catch
-#   - change requirement to be dict[str, float] and probably TypeError catch if
-#     'total_sales' really can come as str
-#   - don't change reqs, but catch TypeError and extend test cases
 RevenueData: TypeAlias = list[dict[str, str | float]]
 
 
@@ -58,6 +51,13 @@ def get_sorted_report(data: RevenueData) -> RevenueData:
         List of categories sorted by 'total_sales' in descending order.
 
     """
+    # dict[str, str | float] is explicitly required by the task but looks ambiguous
+    # because sorted() will raise on mixed data in 'total_sales'.
+    # probably worth doing one of:
+    #   - implement float() conversion with ValueError/TypeError catch
+    #   - change requirement to be dict[str, float] and probably TypeError catch if
+    #     'total_sales' really can come as str
+    #   - don't change reqs, but catch TypeError and extend test cases
     return sorted(data, key=lambda item: item["total_sales"], reverse=True)
 
 
