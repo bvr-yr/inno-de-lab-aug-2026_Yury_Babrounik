@@ -44,7 +44,6 @@ class Cohort:
             trainees: Collection of trainees to initialize with.
                 Defaults to None (creates an empty list).
 
-
         """
         self.title = title
         self.trainees = trainees if trainees is not None else []
