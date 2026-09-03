@@ -1,5 +1,6 @@
-from task1_trainee_lms import Trainee
-from task2_extensions import AuditTrainee, Cohort, HardworkingTrainee
+from cohort import Cohort
+from trainee import Trainee
+from trainee_extensions import AuditTrainee, HardworkingTrainee
 
 
 def run_tests_task1() -> None:
